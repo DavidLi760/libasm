@@ -5,6 +5,7 @@ NASMFLAGS = -f elf64
 OBJS = $(SRCS:.s=.o)
 
 all : $(NAME)
+	rm -rf $(OBJS)
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
@@ -19,5 +20,6 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
+	rm -rf $(OBJS)
 
 .PHONY: re fclean clean all

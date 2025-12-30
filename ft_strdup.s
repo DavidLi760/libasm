@@ -1,28 +1,35 @@
 global ft_strdup
 extern ft_strlen
 extern ft_strcpy
-extern malloc
-
 section .text
-; char *ft_strdup(const char *s1);
+
 ft_strdup:
-    push rdi                ; save s1
+    push rsi
+    push rdi
 
     call ft_strlen
-    inc rax                 ; len + 1
-    mov rdi, rax
-    call malloc wrt ..plt
+    mov rcx, rax
+
+    mov rdi, 0
+    mov rsi, rcx
+    mov rdx, 3
+    mov r10, 0x22
+    mov r8, -1
+    mov r9, 0
+    mov rax, 9
+    syscall
 
     test rax, rax
-    je .malloc_error
+    js _return_null
+    mov rdi, rax
 
-    mov rdi, rax            ; dest
-    pop rsi                 ; src
+    pop rsi
+    pop rdx
     call ft_strcpy
 
+    mov rax, rdi
     ret
 
-.malloc_error:
-    pop rdi                 ; clean stack
-    xor rax, rax            ; return NULL
+_return_null:
+    xor rax, rax
     ret

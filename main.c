@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <fcntl.h>
 
 extern long ft_strlen(const char *s);
 extern char *ft_strcpy(char *dst, char *src);
@@ -23,23 +24,28 @@ extern ssize_t ft_read(int fd, void *buf, size_t count);
 extern char *ft_strdup(const char *s);
 
 
-// int	main()
+// int	main(int argc, char **argv)
 // {
-// 	const char *str = "Hello World!";
-// 	long len = ft_strlen(str);
-// 	printf("Length: %ld\n", len);
-// 	return (0);
+//     if (argc == 2)
+//     {
+//     	printf("Length ft_strlen : %d\n", ft_strlen(argv[1]));
+// 	    printf("Length strlen : %d\n", ft_strlen(argv[1]));
+//     }
+//     return (0);
 // }
 
 
 
 // int main(int argc, char **argv)
 // {
-// 	char dst[1024];
+// 	char dst1[1024];
+// 	char dst2[1024];
 // 	if (argc == 2)
 // 	{
-// 		ft_strcpy(dst, argv[1]);
-// 		printf("The string is : %s\n", dst);
+// 		ft_strcpy(dst1, argv[1]);
+//         strcpy(dst2, argv[1])
+// 		printf("String ft_strcpy : %s\n", dst1);
+// 		printf("String strcpy : %s\n", dst1);
 // 	}
 // 	return (0);
 // }
@@ -50,53 +56,71 @@ extern char *ft_strdup(const char *s);
 // {
 // 	if (argc == 3)
 // 	{
-// 		printf("%d\n", ft_strcmp(argv[1], argv[2]));
+// 		printf("Difference ft_strcmp : %d\n", ft_strcmp(argv[1], argv[2]));
+//         printf("Difference strcmp : %d\n", strcmp(argv[1], argv[2]));
 // 	}
 // 	return (0);
 // }
 
 
 
-// int main(void)
+// int main(int argc, char **argv)
 // {
-//     ft_write(1, "Hello\n", 6);
-//     return 0;
+//     if (argc == 2)
+//     {
+//         ft_write(1, argv[1], strlen(argv[1]));
+//         printf("\n");
+//         write(1, argv[1], strlen(argv[1]));
+//         printf("\n");
+//     }
+//     return (0);
 // }
 
 
 
-// int main()
+// int main(int argc, char **argv)
 // {
-//     char buffer[100];
-//     ssize_t n;
-//     n = ft_read(0, buffer, sizeof(buffer) - 1);
-//     if (n == -1)
+
+//     int fd1 = open(argv[1], O_RDONLY);
+//     char buffer1[1024];
+//     int len1;
+//     len1 = ft_read(fd1, buffer1, sizeof(buffer1) - 1);
+//     if (len1 == -1)
 //     {
-//         perror("ft_read error");
+//         perror("OH NO ! ft_read error");
 //         return 1;
 //     }
-//     buffer[n] = '\0';
-//     printf("Lu %zd octets : %s\n", n, buffer);
+//     buffer1[len1] = '\0';
+//     printf("ft_read  %d octets : %s\n", len1, buffer1);
+    
+//     int fd2 = open(argv[1], O_RDONLY);
+//     char buffer2[1024];
+//     int len2;
+//     len2 = read(fd2, buffer2, sizeof(buffer2) - 1);
+//     if (len2 == -1)
+//     {
+//         perror("OH NO ! read error");
+//         return 1;
+//     }
+//     buffer2[len2] = '\0';
+//     printf("read  %d octets : %s\n", len2, buffer2);
 //     return 0;
 // }
 
 
 
-// int main(void)
-// {
-//     const char *s1 = "Hello libasm!";
-//     const char *s2 = "";
-//     char *dup1;
-//     char *dup2;
-//     dup1 = ft_strdup(s1);
-//     dup2 = ft_strdup(s2);
-//     printf("Original : \"%s\"\n", s1);
-//     printf("Dup ASM  : \"%s\"\n", dup1);
-//     printf("\nOriginal : \"%s\"\n", s2);
-//     printf("Dup ASM  : \"%s\"\n", dup2);
-//     if (dup1)
-//         free(dup1);
-//     if (dup2)
-//         free(dup2);
-//     return 0;
-// }
+int main(void)
+{
+    const char *s1 = "Hello libasm!";
+    char *dup1;
+    char *dup2;
+
+    dup1 = ft_strdup(s1);
+    dup2 = strdup(s1);
+    printf("Original : \"%s\"\n", s1);
+    printf("ft_strdup: \"%s\"\n", dup1);
+    printf("strdup   : \"%s\"\n", dup2);
+    free(dup2);
+    return (0);
+}
+

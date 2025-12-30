@@ -16,7 +16,7 @@
 #include <string.h>
 #include <fcntl.h>
 
-extern long ft_strlen(const char *s);
+extern size_t ft_strlen(const char *s);
 extern char *ft_strcpy(char *dst, char *src);
 extern int ft_strcmp(char *s1, char *s2);
 extern ssize_t ft_write(int fd, const void *buf, size_t len);
@@ -28,8 +28,8 @@ extern char *ft_strdup(const char *s);
 // {
 //     if (argc == 2)
 //     {
-//     	printf("Length ft_strlen : %d\n", ft_strlen(argv[1]));
-// 	    printf("Length strlen : %d\n", ft_strlen(argv[1]));
+//     	printf("Length ft_strlen : %ld\n", ft_strlen(argv[1]));
+// 	    printf("Length strlen : %ld\n", ft_strlen(argv[1]));
 //     }
 //     return (0);
 // }
@@ -43,7 +43,7 @@ extern char *ft_strdup(const char *s);
 // 	if (argc == 2)
 // 	{
 // 		ft_strcpy(dst1, argv[1]);
-//         strcpy(dst2, argv[1])
+//         strcpy(dst2, argv[1]);
 // 		printf("String ft_strcpy : %s\n", dst1);
 // 		printf("String strcpy : %s\n", dst1);
 // 	}
@@ -69,9 +69,9 @@ extern char *ft_strdup(const char *s);
 //     if (argc == 2)
 //     {
 //         ft_write(1, argv[1], strlen(argv[1]));
-//         printf("\n");
+//         printf(": ft_write \n");
 //         write(1, argv[1], strlen(argv[1]));
-//         printf("\n");
+//         printf(": write \n");
 //     }
 //     return (0);
 // }
@@ -109,18 +109,18 @@ extern char *ft_strdup(const char *s);
 
 
 
-int main(void)
-{
-    const char *s1 = "Hello libasm!";
-    char *dup1;
-    char *dup2;
+// int main(void)
+// {
+//     const char *s1 = "Hello libasm!";
+//     char *dup1;
+//     char *dup2;
 
-    dup1 = ft_strdup(s1);
-    dup2 = strdup(s1);
-    printf("Original : \"%s\"\n", s1);
-    printf("ft_strdup: \"%s\"\n", dup1);
-    printf("strdup   : \"%s\"\n", dup2);
-    free(dup2);
-    return (0);
-}
+//     dup1 = ft_strdup(s1);
+//     dup2 = strdup(s1);
+//     printf("Original : \"%s\"\n", s1);
+//     printf("ft_strdup: \"%s\"\n", dup1);
+//     printf("strdup   : \"%s\"\n", dup2);
+//     free(dup2);
+//     return (0);
+// }
 

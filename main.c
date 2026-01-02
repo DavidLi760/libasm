@@ -120,6 +120,7 @@ extern char *ft_strdup(const char *s);
 //     printf("Original : \"%s\"\n", s1);
 //     printf("ft_strdup: \"%s\"\n", dup1);
 //     printf("strdup   : \"%s\"\n", dup2);
+//     free(dup1);
 //     free(dup2);
 //     return (0);
 // }

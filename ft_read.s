@@ -6,10 +6,10 @@ ft_read:
 	xor rax, rax
 	syscall
  	test rax, rax
-	js .syscall_error
+	js .error
 	ret
 
-.syscall_error:
+.error:
 	neg rax
 	mov rdi, rax
 	call __errno_location wrt ..plt

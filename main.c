@@ -24,6 +24,61 @@ extern ssize_t ft_read(int fd, void *buf, size_t count);
 extern char *ft_strdup(const char *s);
 
 
+int main(void)
+{
+    printf("Length ft_strlen : %ld\n", ft_strlen("Hello"));
+	printf("Length strlen : %ld\n", ft_strlen("Hello"));
+
+	char dst1[1024];
+	char dst2[1024];
+	ft_strcpy(dst1, "Hello");
+	strcpy(dst2, "Hello");
+	printf("String ft_strcpy : %s\n", dst1);
+	printf("String strcpy : %s\n", dst2);
+
+    printf("Difference strcmp : %d\n", strcmp("Hello", "Hellp"));
+    printf("Difference ft_strcmp : %d\n", ft_strcmp("Hello", "Hellp"));
+    
+    ft_write(1, "Hello", strlen("Hello"));
+    printf(": ft_write \n");
+    write(1, "Hello", strlen("Hello"));
+    printf(": write \n");
+
+    char buffer1[1024];
+    int len1;
+    len1 = ft_read(0, buffer1, sizeof(buffer1) - 1);
+    if (len1 == -1)
+    {
+        perror("OH NO ! ft_read error");
+        return 1;
+    }
+    buffer1[len1] = '\0';
+    printf("ft_read  %d octets : %s\n", len1, buffer1);
+    char buffer2[1024];
+    int len2;
+    len2 = read(0, buffer2, sizeof(buffer2) - 1);
+    if (len2 == -1)
+    {
+        perror("OH NO ! read error");
+        return 1;
+    }
+    buffer2[len2] = '\0';
+    printf("read  %d octets : %s\n", len2, buffer2);
+    
+    const char *s1 = "Hello libasm!";
+    char *dup1;
+    char *dup2;
+    dup1 = ft_strdup(s1);
+    dup2 = strdup(s1);
+    printf("Original : \"%s\"\n", s1);
+    printf("ft_strdup: \"%s\"\n", dup1);
+    printf("strdup   : \"%s\"\n", dup2);
+    free(dup1);
+    free(dup2);
+    return (0);
+}
+
+
 // int	main(int argc, char **argv)
 // {
 //     if (argc == 2)

@@ -1,5 +1,6 @@
 global ft_strcpy
 
+section .text
 ft_strcpy:
 	xor rax, rax
 
@@ -13,4 +14,5 @@ loop:
 
 end:
 	mov byte [rdi + rax], 0
+	mov rax, rdi
 	ret

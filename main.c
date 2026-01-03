@@ -29,12 +29,10 @@ int main(void)
     printf("Length ft_strlen : %ld\n", ft_strlen("Hello"));
 	printf("Length strlen : %ld\n", ft_strlen("Hello"));
 
-	char dst1[1024];
-	char dst2[1024];
-	ft_strcpy(dst1, "Hello");
-	strcpy(dst2, "Hello");
-	printf("String ft_strcpy : %s\n", dst1);
-	printf("String strcpy : %s\n", dst2);
+	char *dst1;
+	char *dst2;
+	printf("String ft_strcpy : %s\n", ft_strcpy(dst1, "Hello"));
+	printf("String strcpy : %s\n", strcpy(dst2, "Hello"));
 
     printf("Difference strcmp : %d\n", strcmp("Hello", "Hellp"));
     printf("Difference ft_strcmp : %d\n", ft_strcmp("Hello", "Hellp"));
